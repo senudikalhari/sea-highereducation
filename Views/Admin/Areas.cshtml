@@ -1,0 +1,23 @@
+﻿@model IEnumerable<BlindMatchPAS_Final.Models.ResearchArea>
+
+<h3>🔬 Research Areas</h3>
+
+<a asp-action="CreateArea" class="btn btn-success mb-3">+ Add Area</a>
+
+<table class="table table-dark">
+    <tr>
+        <th>Name</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var area in Model)
+    {
+        <tr>
+            <td>@area.Name</td>
+            <td>
+                <a asp-action="DeleteArea" asp-route-id="@area.Id"
+                   class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

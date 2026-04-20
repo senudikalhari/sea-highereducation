@@ -1,0 +1,26 @@
+﻿@model IEnumerable<BlindMatchPAS_Final.Models.Notification>
+
+<h3 class="mb-4">🔔 Notifications</h3>
+
+<div class="card-ui">
+
+    @foreach (var item in Model)
+    {
+        <div class="p-3 mb-2 rounded"
+             style="background:@(item.IsRead ? "#1e293b" : "#334155")">
+
+            <p>@item.Message</p>
+
+            <small>@item.CreatedAt</small>
+
+            @if (!item.IsRead)
+            {
+                <a asp-action="MarkAsRead" asp-route-id="@item.Id"
+                   class="btn btn-sm btn-primary mt-2">
+                    Mark as Read
+                </a>
+            }
+        </div>
+    }
+
+</div>

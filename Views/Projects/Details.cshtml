@@ -1,0 +1,27 @@
+﻿@model BlindMatchPAS_Final.Models.Project
+
+<div class="card-ui">
+
+    <h2>@Model.Title</h2>
+
+    <hr />
+
+    <p><strong>Abstract:</strong></p>
+    <p>@Model.Abstract</p>
+
+    <p><strong>Tech Stack:</strong></p>
+    <p>@Model.TechStack</p>
+
+    <p><strong>Research Area:</strong></p>
+    <p>@Model.ResearchArea</p>
+
+    <p>
+        <strong>Status:</strong>
+        <span class="badge bg-info">@Model.Status</span>
+    </p>
+
+    <a asp-action="Index" class="btn btn-secondary mt-3">
+        ⬅ Back
+    </a>
+
+</div>

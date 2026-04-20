@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>SEA Higher Education Center</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <!-- FONTS & ICONS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            position: fixed;
+            background: rgba(2,6,23,0.95);
+            padding-top: 20px;
+            border-right: 1px solid rgba(255,255,255,0.05);
+        }
+
+            .sidebar h4 {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .sidebar a {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 14px 20px;
+                color: #cbd5f5;
+                text-decoration: none;
+                transition: 0.3s;
+            }
+
+                .sidebar a:hover {
+                    background: #1e293b;
+                    color: white;
+                }
+
+        /* MAIN */
+        .main {
+            margin-left: 240px;
+            padding: 20px;
+        }
+
+        /* TOPBAR */
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(2,6,23,0.9);
+            padding: 12px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            border-radius: 10px;
+        }
+
+        .notif-btn {
+            position: relative;
+        }
+
+        .notif-dot {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 8px;
+            height: 8px;
+            background: red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h4>🎓 SEA Higher</h4>
+
+        <a asp-controller="Home" asp-action="Index">
+            <i class="bi bi-house"></i> Home
+        </a>
+
+        @if (User.IsInRole("Student"))
+        {
+            <a asp-controller="Projects" asp-action="Index">
+                <i class="bi bi-folder"></i> Projects
+            </a>
+        }
+
+        @if (User.IsInRole("Supervisor"))
+        {
+            <a asp-controller="Supervisor" asp-action="Index">
+                <i class="bi bi-person-badge"></i> Supervisor
+            </a>
+        }
+
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-controller="Admin" asp-action="Index">
+                <i class="bi bi-gear"></i> Admin
+            </a>
+        }
+
+        <!--NOTIFICATIONS -->
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a asp-controller="Notification" asp-action="Index">
+                <i class="bi bi-bell"></i> Notifications
+            </a>
+        }
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <!-- TOPBAR -->
+        <div class="topbar">
+
+            <h5 class="mb-0">Dashboard</h5>
+
+            <div class="d-flex align-items-center gap-3">
+
+                <!-- 🔔 ICON -->
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-controller="Notification" asp-action="Index"
+                       class="btn btn-outline-light notif-btn">
+                        <i class="bi bi-bell"></i>
+                        <span class="notif-dot"></span>
+                    </a>
+                }
+
+                <!-- USER -->
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <span>👋 @User.Identity.Name</span>
+
+                    <a asp-controller="Account" asp-action="Logout"
+                       class="btn btn-danger">
+                        Logout
+                    </a>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Login"
+                       class="btn btn-primary">
+                        Login
+                    </a>
+                }
+
+            </div>
+
+        </div>
+
+        <!-- CONTENT -->
+        @RenderBody()
+
+    </div>
+
+    <!-- JS -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

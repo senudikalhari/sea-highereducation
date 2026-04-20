@@ -1,0 +1,41 @@
+﻿<h2 class="mb-4">👑 Admin Dashboard</h2>
+
+<div class="row">
+
+    <div class="col-md-3">
+        <div class="card-ui p-4 text-center">
+            <h4>@ViewBag.TotalProjects</h4>
+            <p>Total Projects</p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card-ui p-4 text-center">
+            <h4>@ViewBag.MatchedProjects</h4>
+            <p>Matched</p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card-ui p-4 text-center">
+            <h4>@ViewBag.PendingProjects</h4>
+            <p>Pending</p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card-ui p-4 text-center">
+            <h4>@ViewBag.TotalUsers</h4>
+            <p>Users</p>
+        </div>
+    </div>
+
+</div>
+
+<hr />
+
+<div class="mt-4">
+    <a asp-action="Projects" class="btn btn-primary">📁 View Projects</a>
+    <a asp-action="Users" class="btn btn-info">👥 Users</a>
+    <a asp-action="Areas" class="btn btn-warning">🔬 Research Areas</a>
+</div>

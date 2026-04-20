@@ -1,0 +1,21 @@
+﻿<div class="card-ui hero">
+
+    <h1>🎓 SEA Higher Education Center</h1>
+
+    <p class="mt-2">
+        Smart Blind Match Project Approval System
+    </p>
+
+    <div class="mt-4">
+
+        @if (User.IsInRole("Student"))
+        {
+            <a asp-controller="Projects" asp-action="Index"
+               class="btn btn-primary">
+                <i class="bi bi-folder"></i> My Projects
+            </a>
+        }
+
+    </div>
+
+</div>

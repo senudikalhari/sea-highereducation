@@ -1,0 +1,24 @@
+﻿@model BlindMatchPAS_Final.Models.Project
+
+<div class="card-ui">
+
+    <h3>Create Project</h3>
+
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+
+        <input asp-for="Title" class="form-control mb-2" placeholder="Title" />
+
+        <textarea asp-for="Abstract" class="form-control mb-2" placeholder="Abstract"></textarea>
+
+        <input asp-for="TechStack" class="form-control mb-2" placeholder="Tech Stack" />
+
+        <input asp-for="ResearchArea" class="form-control mb-2" placeholder="Research Area" />
+
+        <!-- FILE -->
+        <input asp-for="File" type="file" class="form-control mb-3" />
+
+        <button class="btn btn-primary">Submit</button>
+
+    </form>
+
+</div>
